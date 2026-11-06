@@ -1,0 +1,45 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: smartvision-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: smartvision_db
+      MYSQL_USER: smartvision_user
+      MYSQL_PASSWORD: smartvision_secret
+      MYSQL_ROOT_PASSWORD: root_secret_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot_secret_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    build: ./backend
+    container_name: smartvision-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - DATABASE_URL=mysql+pymysql://smartvision_user:smartvision_secret@db:3306/smartvision_db
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_DB=smartvision_db
+      - MYSQL_USER=smartvision_user
+      - MYSQL_PASSWORD=smartvision_secret
+    volumes:
+      - ./backend/models:/srv/models
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  mysql-data:

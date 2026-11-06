@@ -1,0 +1,35 @@
+services:
+  backend:
+    build:
+      context: ../backend
+    env_file: ./backend.env
+    volumes:
+      # Model files synced from S3 onto the EC2 host (see DEPLOY steps).
+      - /opt/smartvision/models:/srv/models:ro
+      # Keeps the downloaded ImageNet weights so restarts don't re-download ~100 MB.
+      - keras-cache:/root/.keras
+      # Keeps the CLIP weights (~600 MB) the AI detector downloads on first use.
+      - hf-cache:/root/.cache/huggingface
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 300s
+
+  web:
+    build:
+      context: ../frontend
+      args:
+        VITE_API_URL: /api
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  keras-cache:
+  hf-cache:

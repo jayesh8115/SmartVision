@@ -1,0 +1,36 @@
+# ---- Secrets / credentials (never push) ----
+.env
+.env.*
+!.env.example
+cloud/backend.env
+*.pem
+*.ppk
+.aws/
+
+# ---- Python ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---- Node / frontend build ----
+node_modules/
+dist/
+build/
+
+# ---- Large data and models ----
+dataset/
+*.keras
+*.h5
+backend/uploads/
+training/ai_detector/cache/
+_out/
+*.zip
+
+# ---- Logs / OS / IDE ----
+*.log
+.DS_Store
+Thumbs.db
+.idea/

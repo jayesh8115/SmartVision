@@ -1,0 +1,24 @@
+# Versions pinned to the working local .venv (checked with pip freeze on 2026-10-25),
+# so the models load the same way on the server.
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+boto3==1.43.103
+numpy==2.5.3
+pillow==12.3.0
+tensorflow-cpu==2.21.0
+keras==3.15.1
+torch==2.14.1
+transformers==5.19.0
+# ai_detector.joblib was saved with scikit-learn 1.9.1
+scikit-learn==1.9.1
+joblib==1.6.0
+# Not in the freeze check; loosely pinned. Run `pip freeze` for these three
+# and pin them too once you want fully identical builds.
+python-multipart>=0.0.9
+pydantic>=2.6
+pydantic-settings>=2.2
+matplotlib>=3.8
+# Database (MySQL & ORM)
+sqlalchemy>=2.0.0
+pymysql>=1.1.0
+cryptography>=42.0.0

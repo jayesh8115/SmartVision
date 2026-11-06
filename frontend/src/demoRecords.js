@@ -1,0 +1,128 @@
+// Demo records shown in Classification History on every page load.
+// thumbnailUrl points to /samples/* which are served as static assets — always available.
+export const INITIAL_DEMO_RECORDS = [
+  {
+    id: 'demo-1',
+    imageName: 'golden_retriever.jpg',
+    thumbnailUrl: '/samples/golden_retriever.jpg',
+    top1: {
+      label: 'golden retriever',
+      confidence: 0.9862,
+    },
+    top_k: [
+      { label: 'golden retriever', confidence: 0.9862 },
+      { label: 'Labrador retriever', confidence: 0.0105 },
+      { label: 'cocker spaniel', confidence: 0.0067 },
+      { label: 'flat-coated retriever', confidence: 0.0028 },
+      { label: 'Irish setter', confidence: 0.0011 },
+    ],
+    status: 'confident',
+    inference_ms: 42.1,
+    timestamp: 'Demo Sample',
+    mode: 'predict',
+  },
+  {
+    id: 'demo-2',
+    imageName: 'sports_car.jpg',
+    thumbnailUrl: '/samples/sports_car.jpg',
+    top1: {
+      label: 'sports car',
+      confidence: 0.9624,
+    },
+    top_k: [
+      { label: 'sports car', confidence: 0.9624 },
+      { label: 'convertible', confidence: 0.0215 },
+      { label: 'racer', confidence: 0.0094 },
+      { label: 'car wheel', confidence: 0.0041 },
+      { label: 'minivan', confidence: 0.0018 },
+    ],
+    status: 'confident',
+    inference_ms: 38.6,
+    timestamp: 'Demo Sample',
+    mode: 'predict',
+  },
+  {
+    id: 'demo-3',
+    imageName: 'monarch_butterfly.jpg',
+    thumbnailUrl: '/samples/monarch_butterfly.jpg',
+    top1: {
+      label: 'monarch butterfly',
+      confidence: 0.9914,
+    },
+    top_k: [
+      { label: 'monarch butterfly', confidence: 0.9914 },
+      { label: 'ringlet', confidence: 0.0031 },
+      { label: 'cabbage butterfly', confidence: 0.0019 },
+      { label: 'admiral', confidence: 0.0009 },
+      { label: 'sulphur butterfly', confidence: 0.0006 },
+    ],
+    status: 'confident',
+    inference_ms: 45.3,
+    timestamp: 'Demo Sample',
+    mode: 'explain',
+  },
+  {
+    id: 'demo-4',
+    imageName: 'coffee_mug.jpg',
+    thumbnailUrl: '/samples/coffee_mug.jpg',
+    top1: {
+      label: 'coffee mug',
+      confidence: 0.9482,
+    },
+    top_k: [
+      { label: 'coffee mug', confidence: 0.9482 },
+      { label: 'cup', confidence: 0.0381 },
+      { label: 'coffeepot', confidence: 0.0054 },
+      { label: 'teapot', confidence: 0.0029 },
+      { label: 'pitcher', confidence: 0.0017 },
+    ],
+    status: 'confident',
+    inference_ms: 39.8,
+    timestamp: 'Demo Sample',
+    mode: 'predict',
+  },
+]
+
+// Demo records shown in AI Detection History on every page load.
+export const INITIAL_AI_DEMO_RECORDS = [
+  {
+    id: 'ai-demo-1',
+    imageName: 'sports_car.jpg',
+    thumbnailUrl: '/samples/sports_car.jpg',
+    label: 'AI-Generated',
+    verdict: 'likely_ai',
+    confidence: 0.884,
+    probabilities: { real: 0.116, ai: 0.884 },
+    timestamp: 'Demo Sample',
+  },
+  {
+    id: 'ai-demo-2',
+    imageName: 'golden_retriever.jpg',
+    thumbnailUrl: '/samples/golden_retriever.jpg',
+    label: 'Real Image',
+    verdict: 'likely_real',
+    confidence: 0.965,
+    probabilities: { real: 0.965, ai: 0.035 },
+    timestamp: 'Demo Sample',
+  },
+  {
+    id: 'ai-demo-3',
+    imageName: 'monarch_butterfly.jpg',
+    thumbnailUrl: '/samples/monarch_butterfly.jpg',
+    label: 'Real Image',
+    verdict: 'likely_real',
+    confidence: 0.942,
+    probabilities: { real: 0.942, ai: 0.058 },
+    timestamp: 'Demo Sample',
+  },
+  {
+    id: 'ai-demo-4',
+    imageName: 'coffee_mug.jpg',
+    thumbnailUrl: '/samples/coffee_mug.jpg',
+    label: 'Uncertain',
+    verdict: 'uncertain',
+    confidence: 0.548,
+    probabilities: { real: 0.452, ai: 0.548 },
+    timestamp: 'Demo Sample',
+  },
+]

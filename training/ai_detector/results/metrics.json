@@ -1,0 +1,46 @@
+{
+  "clip_model": "openai/clip-vit-base-patch32",
+  "best_C": 5.0,
+  "decision_threshold": 0.72,
+  "seed": 42,
+  "splits": {
+    "validation": {
+      "threshold": 0.72,
+      "accuracy": 0.8844,
+      "precision": 0.9626,
+      "recall": 0.8,
+      "real_fpr": 0.0311,
+      "f1": 0.8738,
+      "confusion_matrix": [
+        [
+          218,
+          7
+        ],
+        [
+          45,
+          180
+        ]
+      ],
+      "cm_plot": "training\\ai_detector\\results\\cm_val.png"
+    },
+    "held_out_midjourney": {
+      "threshold": 0.72,
+      "accuracy": 0.896,
+      "precision": 0.9714,
+      "recall": 0.816,
+      "real_fpr": 0.024,
+      "f1": 0.887,
+      "confusion_matrix": [
+        [
+          244,
+          6
+        ],
+        [
+          46,
+          204
+        ]
+      ],
+      "cm_plot": "training\\ai_detector\\results\\cm_test_midjourney.png"
+    }
+  }
+}

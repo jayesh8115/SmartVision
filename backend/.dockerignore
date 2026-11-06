@@ -1,0 +1,16 @@
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.env
+.env.*
+tests
+pytest.ini
+models
+dataset
+cifar-10-batches-py
+cifar-100-python
+*.ipynb
+*.keras
+*.h5
